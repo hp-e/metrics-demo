@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>dotnet-PoC.Service-532D072C-0383-46B6-9EB1-508CE8A624D6</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="App.Metrics.AspNetCore" Version="4.2.0"/>
+    <PackageReference Include="App.Metrics.Extensions.HealthChecks" Version="4.2.0"/>
+    <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="5.0.10"/>
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0"/>
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.1.3"/>
+    <PackageReference Include="Serilog.Enrichers.AssemblyName" Version="1.0.9"/>
+    <PackageReference Include="Serilog.Enrichers.ExceptionData" Version="1.0.0"/>
+    <PackageReference Include="Serilog.Sinks.Grafana.Loki" Version="7.1.0"/>
+  </ItemGroup>
+</Project>
