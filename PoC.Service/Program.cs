@@ -62,7 +62,7 @@ namespace PoC.Service
                 {
                     webBuilder
                         .UseKestrel()
-                        .UseUrls($"http://0.0.0.0:5200")                        
+                        .UseUrls($"http://0.0.0.0:5000")                        
                         .UseStartup<Startup>();
                 });
 

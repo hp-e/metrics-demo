@@ -61,7 +61,7 @@ namespace PoC.Api
                 {
                     webBuilder
                         .UseKestrel()
-                        .UseUrls($"http://0.0.0.0:5100")
+                        .UseUrls($"http://0.0.0.0:5000")
                         .UseStartup<Startup>();
                 });
 
