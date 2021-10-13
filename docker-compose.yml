@@ -3,10 +3,11 @@ version: '3.7'
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    loki-data: {}
 
 networks:
-  front-tier:
-  back-tier:
+  frontend:
+  backend:
 
 services:
 
@@ -24,7 +25,7 @@ services:
       - 9090:9090
     
     networks:
-      - back-tier
+      - backend
     restart: always
 
   node-exporter:
@@ -41,7 +42,7 @@ services:
     ports:
       - 9100:9100
     networks:
-      - back-tier
+      - backend
     restart: always
     deploy:
       mode: global
@@ -59,22 +60,34 @@ services:
     env_file:
       - ./grafana/config.monitoring
     networks:
-      - back-tier
-      - front-tier
+      - backend
+      - frontend
     restart: always
 
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes: 
+      - loki-data:/etc/loki
+  
   api:
     build: ./PoC.Api
     ports:
-      - 5400:5100
+      - 5400:5000
     networks:
-      - back-tier
+      - backend
     restart: always
   
   service:
     build: ./PoC.Service
     ports:
-      - 5500:5200
+      - 5500:5000
     networks:
-      - back-tier
+      - backend
     restart: always
