@@ -62,6 +62,18 @@ scrape_configs:
       type: 'A'
       port: 9100
 
+  - job_name: 'services'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: [
+        "api:5000",
+        "service:5000"
+      ]  
+    metrics_path: /metrics-text
+
 #  - job_name: 'pushgateway'
 #    scrape_interval: 10s
 #    dns_sd_configs:
