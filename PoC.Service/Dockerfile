@@ -1,13 +1,13 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal AS base
 WORKDIR /app
-EXPOSE 5200
+EXPOSE 5000
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /src
 COPY ["PoC.Service.csproj", "./"]
 RUN dotnet restore "./PoC.Service.csproj"
 
-COPY . .
+COPY ./ ./
 WORKDIR "/src/."
 RUN dotnet build "PoC.Service.csproj" -c Release -o /app/build
 
