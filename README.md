@@ -3,6 +3,13 @@
 Use Prometheus, Loki to collect metrics about applications.
 Use Grafana to show dashboards with the collected metrics.
 
+Use docker compose to build the services and download prometheus, grafana and loki.
+```cmd
+docker-compose up -d
+```
+
+Note that this works best on Linux
+
 ## Grafana
 
 Is used to show dashboards with metrics. There are two dasboards that is functioning.
